@@ -21,11 +21,15 @@ if (isset($_POST['user']) && isset($_POST['password'])) {
     $user = hash("SHA256", $_POST['user']);
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     if ($user == "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918" && password_verify("admin", $password)){
+        header('Location: login_submit.php');
+        exit();
     } else {
         header('Location: login.php');
+        exit();
     }
 }
 ?>
+
 </body>
 
 <footer>
