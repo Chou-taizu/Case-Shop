@@ -12,7 +12,7 @@
 </head>
 
 <header>
-    <h1> INFORMATIONS </h1>
+    <h1> <?php echo "Bonjour ".$_POST['prenom']." le formulaire a bien été reçu<br>"?> </h1>
 </header>
 
 <body>
@@ -21,9 +21,6 @@ if (isset($_POST['user']) && isset($_POST['password'])) {
     $user = hash("SHA256", $_POST['user']);
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
     if ($user == "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918" && password_verify("admin", $password)){
-
-        $message = file_get_contents('message.txt');
-        echo "<div> Message secret: " . $message . " </div>";
     } else {
         header('Location: login.php');
     }
